@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <title>{% block title %}Contact | SelebHub{% endblock %}</title>
+    <div class="container">
+    <div class="row">
+        <div class="col-lg-1">
+
+        </div>
+        <div class="col-lg-10 pt-lg-5 pb-lg-5 pb-5">
+            <div class="pb-lg-5">
+                Got any question?
+            </div>
+            <div>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <div class="form-actions">
+                      <button class="btn-outline-secondary" type="submit">Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-1">
+
+        </div>
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <title> {% block title %}Home | SelebHub{% endblock %}</title>
+    <main role="main">
+    {% include 'shared/banner.html' %}
+        <style>
+            .img_card {
+                float: left;
+                width:  100%;
+                height: 20vh;
+                object-fit: cover;
+            }
+        </style>
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row pl-3 pr-3">
+                    {% for i in x %}
+                        <div class="col-md-3 pd_card">
+                            <div class="card mb-2 box-shadow gedein">
+                                <img class="card-img-top img_card" src="{{ i.my_photo.url }}" alt="">
+                                    <div class="card-body">
+                                        <p class="card-text my_name">{{ i.my_name }}</p>
+                                        Category: <a id="btn_small" class="btn btn-outline-success btn-sm" type="button" href="{% url 'cat_detail' i.category %}">{{ i.category }}</a>
+                                        <div class="d-flex justify-content-between align-items-center pt-lg-2">
+                                        <div class="btn-group">
+                                        <a id="btn_small" class="btn btn-sm btn-outline-secondary btn-sm" href="u/{{ i.u_name }}">View</a>
+                                    </div>
+                                <small class="text-muted">{{ i.joined | date:"d M, Y" }}</small>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

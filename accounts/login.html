@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load compress %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <title>{% block title %} Login | SelebHub {% endblock %}</title>
+  <div class="container pt-lg-5 pb-lg-5">
+        <div class="row">
+            <div class="col-lg-4 col-2">
+
+            </div>
+            <div class="col-lg-4 col-8 pt-5 pb-5">
+               <h2 style="text-align: center">Sign-in</h2>
+                <div>
+                      <form method="post" enctype="multipart/form-data">
+                          {% csrf_token %}
+                          <fieldset class="form-group">
+{#                              <legend class="border-bottom mb-4" style="color:red; text-align: center">Hai, apa kabar?</legend>#}
+                              {{ form|crispy }}
+                          </fieldset>
+                          <div class="form-group">
+                              <button class="btn btn-outline-primary btn-sm" type="submit">Sign-in</button>
+                          </div>
+                      </form>
+                      <div class="border-top pt-3">
+                          <small class="text-muted">
+                          Don't have an account yet? <strong> <a href="{% url 'register' %}">Sign-up</a></strong> here
+                          </small>
+                      </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-2">
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

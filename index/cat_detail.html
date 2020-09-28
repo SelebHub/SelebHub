@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load compress %}
+
+{% block content %}
+    <title>{% block title %} {{ cat_detail }} | SelebHub {% endblock %}</title>
+
+    <style>
+    .img_cat_profile {
+        float: left;
+        width:  100%;
+        height: 50vh;
+        object-fit: cover;
+    }
+    .cat_person {
+        padding-left: 2px;
+        float: left;
+        width: 10%;
+    }
+    .cat_name_detail {
+        float: left;
+        padding-left: 10px;
+        padding-top: 4px;
+    }
+    </style>
+
+    <div class="container">
+        <div class="row pt-lg-5 pb-lg-5 pt-5 pb-5">
+            <div class="col-lg-12 text-center pt-lg-2 pb-lg-5">
+                <div class="pb-lg-5 pb-3">
+                    <h3 class="text-center text-muted">All <b>{{ cat_detail }}</b> Category</h3>
+                </div>
+            {% if data %}
+                <div class="card-deck">
+                    {% for i in data %}
+                        <div class="col-md-4">
+                            <div class="card mb-4 shdw">
+                                <img class="card-img-top img_cat_profile" src="{{ i.my_photo.url }}" alt="">
+                                <div class="card-body">
+                                    <span class="text-muted">
+                                        <img class="cat_person" src="{% static 'icons/person-circle.svg' %}" alt="">
+                                        <b class="cat_name_detail">{{ i.my_name | slice:":17" }}</b>
+                                    </span>
+                                    <a class="btn btn-secondary btn-sm right_btn" type="button" href="{% url 'detail' i.u_name %}">Detail</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+            {% else %}
+                <div class="text-center">
+                    <img class="text-center" style="width: 30%; height: auto" src="{% static 'icons/broke.svg' %}" alt="">
+                    <h1>Oops, We don't have any matching profile in this category!. <br> Why not you <a
+                            href="{% url 'create' %}"><b>create</b></a> one? </h1>
+                </div>
+                </div>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

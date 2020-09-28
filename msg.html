@@ -1,0 +1,29 @@
+{% load static %}
+{% load compress %}
+
+
+
+
+<style>
+    ul {
+        list-style-type: none;
+        padding-top: 5px;
+    }
+    .messages {
+        background-color: #83ca56;
+    }
+    .success {
+        color: #3d5f42;
+    }
+</style>
+{% if messages %}
+<ul class="messages text-center">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% if error %}
+{{ error }}
+{% endif %}

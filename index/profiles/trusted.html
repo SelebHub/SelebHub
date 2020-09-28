@@ -1,0 +1,60 @@
+{% load static %}
+{% load compress %}
+
+<div class="pr-lg-3 pl-lg-3 ml-lg-5 mr-lg-5 px-2 py-2">
+    <style>
+        .rate {
+            width: 30px;
+            height: auto;
+        }
+    </style>
+    <div class="card">
+        <div class="pt-lg-2 pb-lg-3 pl-lg-2 pr-lg-2 pt-2 pb-3">
+            <h5 class="text-center text-muted"><b>Trusted Level</b></h5>
+            <div class="text-center">
+            {% for i in rate %}
+                    {% if i.choices == '0 Star' %}
+                        <div>
+                            <img class="rate" src="{% static 'icons/empty-star.svg' %}" alt="">
+                            <img class="rate" src="{% static 'icons/empty-star.svg' %}" alt="">
+                            <img class="rate" src="{% static 'icons/empty-star.svg' %}" alt="">
+                            <img class="rate" src="{% static 'icons/empty-star.svg' %}" alt="">
+                            <img class="rate" src="{% static 'icons/empty-star.svg' %}" alt="">
+                        </div>
+                        Help this user get their first client
+                    {% elif i.choices == '1 Star' %}
+                        <img class="rate" src="{% static 'icons/star.svg' %}" alt="">
+                        <img class="rate" src="{% static 'icons/empty-star.svg' %}" alt="">
+                        <img class="rate" src="{% static 'icons/empty-star.svg' %}" alt="">
+                        <img class="rate" src="{% static 'icons/empty-star.svg' %}" alt="">
+                        <img class="rate" src="{% static 'icons/empty-star.svg' %}" alt="">
+                    {% elif i.choices == '2 Star' %}
+                        <img class="rate" src="{% static 'icons/star.svg' %}" alt="">
+                        <img class="rate" src="{% static 'icons/star.svg' %}" alt="">
+                        <img class="rate" src="{% static 'icons/empty-star.svg' %}" alt="">
+                        <img class="rate" src="{% static 'icons/empty-star.svg' %}" alt="">
+                        <img class="rate" src="{% static 'icons/empty-star.svg' %}" alt="">
+                    {% elif i.choices == '3 Star' %}
+                        <img class="rate" src="{% static 'icons/star.svg' %}" alt="">
+                        <img class="rate" src="{% static 'icons/star.svg' %}" alt="">
+                        <img class="rate" src="{% static 'icons/star.svg' %}" alt="">
+                        <img class="rate" src="{% static 'icons/empty-star.svg' %}" alt="">
+                        <img class="rate" src="{% static 'icons/empty-star.svg' %}" alt="">
+                    {% elif i.choices == '4 Star' %}
+                        <img class="rate" src="{% static 'icons/star.svg' %}" alt="">
+                        <img class="rate" src="{% static 'icons/star.svg' %}" alt="">
+                        <img class="rate" src="{% static 'icons/star.svg' %}" alt="">
+                        <img class="rate" src="{% static 'icons/star.svg' %}" alt="">
+                        <img class="rate" src="{% static 'icons/empty-star.svg' %}" alt="">
+                    {% elif i.choices == '5 Star' %}
+                        <img class="rate" src="{% static 'icons/star.svg' %}" alt="">
+                        <img class="rate" src="{% static 'icons/star.svg' %}" alt="">
+                        <img class="rate" src="{% static 'icons/star.svg' %}" alt="">
+                        <img class="rate" src="{% static 'icons/star.svg' %}" alt="">
+                        <img class="rate" src="{% static 'icons/star.svg' %}" alt="">
+                    {% endif %}
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

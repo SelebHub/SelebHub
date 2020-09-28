@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load compress %}
+{% load cloudinary %}
+
+{% block content %}
+    <title>{% block title %} {{ x.my_name }} | SelebHub {% endblock %}</title>
+    <div class="container">
+        <style>
+            .detail {
+                list-style-type: none;
+            }
+            .img_detail {
+                width: 70%;
+                height: 80%;
+            }
+            .sdw {
+                -webkit-box-shadow: -1px 0px 12px 0px rgba(0,0,0,0.75);
+                -moz-box-shadow: -1px 0px 12px 0px rgba(0,0,0,0.75);
+                box-shadow: -1px 0px 12px 0px rgba(0,0,0,0.75);
+            }
+            .profile_detail {
+                color: #5d6e7f;
+            }
+            .btn_edit_detail {
+                float: right;
+            }
+        </style>
+        <div class="row pt-lg-5 pb-lg-10 pb-3">
+            <div class="col-lg-6 pr-lg-0">
+                <div class="">
+                    <div class="text-center pt-3 pb-3">
+                        <img class="img_detail sdw" src="{{ x.my_photo.url }}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 pl-lg-0">
+
+                {% include 'index/profiles/trusted.html' %}
+
+                <div class="pt-lg-2 pb-lg-2 pr-lg-3 pl-lg-3 ml-lg-5 mr-lg-5 ml-2 mr-2">
+                    <div class="card">
+                        <div class="text-center profile_detail pt-lg-3">
+                            <strong>Profile Detail</strong>
+                        </div>
+                        <ul class="detail">
+                            <li><img src="{% static 'icons/person-circle.svg' %}" alt=""> <b class="text-muted">{{ x.u_name }}</b></li>
+                            <li><img src="{% static 'icons/tag.svg' %}" alt=""> <a href="/category/{{ x.category }}">{{ x.category }}</a></li>
+                            <li><img src="{% static 'icons/card-heading.svg' %}" alt=""> <b class="text-muted">{{ x.my_name }}</b></li>
+                            <li><img src="{% static 'icons/person-dash.svg' %}" alt=""> {{ x.my_age }}</li>
+                            <li><img src="{% static 'icons/email.svg' %}" alt=""> <a href="mailto:{{ x.my_email }}">{{ x.my_email }}</a></li>
+                            <li><img src="{% static 'icons/instagram.svg' %}" alt=""> <a target="_blank" href="https://instagram.com/{{ x.my_instagram }}">@{{ x.my_instagram }}</a></li>
+                            <li><img src="{% static 'icons/facebook.svg' %}" alt=""> <a target="_blank" href="https://facebook.com/{{ x.my_facebook }}">@{{ x.my_facebook }}</a></li>
+                            <li><img src="{% static 'icons/twitter.svg' %}" alt=""> <a target="_blank" href="https://twitter.com/{{ x.my_twitter }}">@{{ x.my_twitter }}</a></li>
+                            <li><img src="{% static 'icons/linkedin.svg' %}" alt=""> <a target="_blank" href="https://linkedin.com/in/{{ x.my_twitter }}">@{{ x.my_linkedin }}</a></li>
+                            <li><img src="{% static 'icons/cash.svg' %}" alt=""> {{ x.my_price }}</li>
+                        </ul>
+                    </div>
+
+                    <div class="btn_edit_detail pt-lg-2 pt-2">
+                    {% if user.is_authenticated and user == x.u_name %}
+                    <div>
+                        <a href="{{ u_name.id }}update/">
+                            <button type="button" class="btn btn-outline-secondary btn-sm">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
+                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"></path>
+                                </svg>
+                                Update
+                            </button>
+                        </a>
+                        <a href="{{ u_name.id }}delete/">
+                            <button type="button" class="btn btn-danger btn-sm">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
+                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
+                                </svg>
+                                Delete
+                            </button>
+                        </a>
+                    </div>
+                {% endif %}
+                </div>
+                </div>
+            </div>
+        </div>
+
+        {% include 'index/profiles/portfolio.html' %}
+    </div>
+{% endblock %}

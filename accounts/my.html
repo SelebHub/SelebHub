@@ -1,0 +1,63 @@
+{% load static %}
+{% load compress %}
+
+{% block content %}
+    <style>
+        .my_endorse {
+            list-style-type: none;
+        }
+        .card_endorse {
+            background-color: #f6f6f6;
+        }
+    </style>
+
+    {% if endorse_form %}
+        {% for endorse_form in endorse_form %}
+            <div class="card card_endorse">
+                <div class="pt-lg-3">
+                    <div class="text-center">
+                        <h5>Your endorse detail</h5>
+                    </div>
+                    <ul class="my_endorse">
+                        <li><img src="{% static 'icons/person-circle.svg' %}" alt=""> {{ endorse_form.u_name }}</li>
+                        <li><img src="{% static 'icons/tag.svg' %}" alt=""> <a href="/category/{{ endorse_form.category }}">{{ endorse_form.category }}</a></li>
+                        <li><img src="{% static 'icons/card-heading.svg' %}" alt=""> {{ endorse_form.my_name }}</li>
+                        <li><img src="{% static 'icons/person-dash.svg' %}" alt=""> {{ endorse_form.my_age }}</li>
+                        <li><img src="{% static 'icons/email.svg' %}" alt=""> <a href="mailto:{{ x.my_email }}">{{ endorse_form.my_email }}</a></li>
+                        <li><img src="{% static 'icons/instagram.svg' %}" alt=""> <a target="_blank" href="https://instagram.com/{{ x.my_instagram }}">@{{ endorse_form.my_instagram }}</a></li>
+                        <li><img src="{% static 'icons/facebook.svg' %}" alt=""> <a target="_blank" href="https://facebook.com/{{ x.my_facebook }}">@{{ endorse_form.my_facebook }}</a></li>
+                        <li><img src="{% static 'icons/twitter.svg' %}" alt=""> <a target="_blank" href="https://twitter.com/{{ x.my_twitter }}">@{{ endorse_form.my_twitter }}</a></li>
+                        <li><img src="{% static 'icons/linkedin.svg' %}" alt=""> <a target="_blank" href="https://linkedin.com/in/{{ x.my_twitter }}">@{{ endorse_form.my_linkedin }}</a></li>
+                        <li><img src="{% static 'icons/cash.svg' %}" alt=""> Rp. {{ endorse_form.my_price }}</li>
+                    </ul>
+                </div>
+            </div>
+
+            {% if user.is_authenticated and user == endorse_form.u_name %}
+                <div class="text-right pt-lg-1 pt-2">
+                    <a href="/u/{{ endorse_form.u_name }}/{{ u_name.id }}update/">
+                        <button class="btn btn-outline-secondary btn-sm">
+                            Update
+                        </button>
+                    </a>
+                    <a href="/u/{{ endorse_form.u_name }}/{{ u_name.id }}delete/">
+                        <button class="btn btn-danger btn-sm">
+                            Delete
+                        </button>
+                    </a>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <div class="pt-lg-5 pb-lg-5 pt-5 pb-5" style="background-color: #c9cacb">
+            <div class="text-center" style="">
+                <p class="text-muted"><b>Kamu belum memiliki iklan endorse.</b></p>
+                <a href="{% url 'create' %}">
+                    <button class="btn btn-outline-success btn-sm">
+                        buat sekarang
+                    </button>
+                </a>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,73 @@
+{% load static %}
+{% load compress %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <title>{% block title %} SelebHub {% endblock %}</title>
+	<link href="{% static 'img/logo.png' %}" rel="shortcut icon"/>
+
+
+    <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
+    <!--                                            -->
+    <!--    Developer Email: lets@builtwith.me      -->
+    <!--    Developer Site: http://builtwith.me     -->
+    <!-- Developer Phone Number: +62 813 1060 1328  -->
+    <!--                                            -->
+    <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+    {% include 'static/css.html' %}
+
+    {% compress js %}
+        <script src="{% static 'js/sentry.min.js' %}"></script>
+    {% endcompress %}
+
+    <script>
+        Sentry.init({
+            dsn: 'https://059f22f8706c4b07b8eb0ab14cd366da@o291735.ingest.sentry.io/5432197',
+            maxBreadcrumbs: 50,
+            debug: true,
+        })
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/jquery-3.5.1.js"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+    {% include 'msg.html' %}
+
+    {% include 'shared/nav.html' %}
+
+    {% block content %}
+{#        content goes here#}
+    {% endblock %}
+
+    {% include 'shared/footer.html' %}
+</body>
+{% compress js %}
+    {% include 'static/js.html' %}
+{% endcompress %}
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+    $('.display').dataTable();
+</script>
+</html>

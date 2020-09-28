@@ -1,0 +1,7 @@
+{% load static %}
+{% load compress %}
+
+{% compress css %}
+    <link rel="stylesheet" href="{% static 'css/extends.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+{% endcompress %}

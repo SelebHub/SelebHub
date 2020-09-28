@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load compress %}
+
+{% block content %}
+    <title>{% block title %}Categories | SelebHub {% endblock %}</title>
+    <style>
+    .img_categories {
+        width: 50px;
+        height: auto;
+    }
+    .btn_categories {
+        padding: 15px;
+        margin: 5px;
+    }
+    </style>
+    <div class="container">
+        <div class="row pt-lg-5 pb-lg-10">
+            <div class="col-lg-12">
+                <div class="pt-3 pb-3">
+                    <h3 class="text-muted"><b>All categories</b></h3>
+                </div>
+                <div class="text-center">
+                    {% for i in categories %}
+                        <a class="btn btn-light btn_categories" type="button" href="{% url 'cat_detail' i.name %}">
+                        <img class="img_categories" src="{{ i.img.url }}" alt="Profile by categories"> {{ i }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

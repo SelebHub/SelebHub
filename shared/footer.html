@@ -1,0 +1,59 @@
+{% load static %}
+
+<style>
+    @media (min-width: 576px) {
+        .bd-footer {
+            text-align: left;
+        }
+        .left_foot {
+            padding-left: 10px !important;
+        }
+    }
+    .bd-footer {
+        text-align: left;
+        font-size: 85%;
+        background-color: #f7f7f7;
+    }
+    .bd-footer ul li {
+        list-style-type: none;
+        display: inline;
+    }
+    .bd-footer-links li+li {
+        margin-left: 1rem;
+    }
+    .text-muted a{
+        color: #6c757d!important;
+    }
+    .left_foot {
+    }
+    .right_foot {
+        padding-left: 33vh;
+    }
+</style>
+
+<footer class="bd-footer text-muted">
+    <div class="container pt-lg-5 pb-lg-2 pt-3 pb-3">
+        <div class="row">
+            <div class="col-lg-4">
+            <ul class="bd-footer-links left_foot pl-lg-0 pl-2">
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="#">Term of Service</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+            </div>
+            <div class="col-lg-4">
+
+            </div>
+            <div class="col-lg-4">
+                <ul class="bd-footer-links pr-lg-0 pl-2">
+                    <li><a href="https://github.com/icoldplayer">GitHub</a></li>
+                    <li><a href="https://twitter.com/sudoaptupgrade">Twitter</a></li>
+                    <li><a href="http://notnoob.com">noTnoob Inc</a></li>
+                    <li><a href="http://builtwith.me">BuiltWith.me</a></li>
+                </ul>
+            </div>
+        </div>
+        <p>Develop by <a href="https://istock.id" target="_blank" rel="noopener">iStock Indonesia</a> and sponsored by <a href="http://notnoob.com" target="_blank" rel="noopener">noTnoob. Inc</a>.</p>
+    </div>
+</footer>

@@ -1,0 +1,13 @@
+<section class="jumbotron text-center mb-lg-0">
+    <div class="container">
+        <h1 class="jumbotron-heading">Get Your Favorite Influencer Here</h1>
+        <p class="lead">Temukan influencer yang sesuai dengan budget dan kebutuhanmu secara cepat dan tepat!.</p>
+        <p>
+            {% if user.is_authenticated %}
+
+            {% else %}
+                <a href="{% url 'register' %}" class="btn btn-outline-success my-2"><b>Join as an influencer</b></a>
+            {% endif %}
+        </p>
+    </div>
+</section>
