@@ -1,0 +1,71 @@
+{% load static %}
+{% load compress %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light pl-lg-5 pr-lg-5">
+<style>
+    .logo_nav {
+        width: 75%;
+    }
+    .active {
+        color: #8798a2;
+        font-weight: bolder;
+    }
+    .sdropdown {
+        position: relative;
+        padding: 10%;
+        background-color: #dde8e4;
+    }
+    #navbarNav {
+        position: relative;
+        margin-left: -17rem;
+    }
+</style>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-9">
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    <img class="logo_nav" src="{% static 'img/logos.png' %}" alt="SelebHub_Logo">
+                </a>
+            </div>
+            <div class="col-3">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    {% with url_name=request.resolver_match.url_name %}
+                        <ul class="nav navbar-nav ml-auto dropdown">
+                            <li class="{% if url_name == 'search' %}active{% endif %}">
+                                <a class="nav-link" href="{% url 'search' %}">Search</a>
+                            </li>
+                            <li class="{% if url_name == 'categories' %}active{% endif %}">
+                                <a class="nav-link" href="{% url 'categories' %}">Categories</a>
+                            </li>
+                            <li class="{% if url_name == 'platforms' %}active{% endif %}">
+                                <a class="nav-link" href="{% url 'platforms' %}">Platforms</a>
+                            </li>
+                            <li class="nav-item {% if url_name == 'blog' %}active{% endif %}">
+                                <a class="nav-link" href="{% url 'blog' %}">Blog</a>
+                            </li>
+                            {% if user.is_authenticated %}
+                                <li class="nav-item {% if url_name == 'account' %}active{% endif %}">
+                                    <a class="nav-link" href="{% url 'account' %}">My Account</a>
+                                </li>
+                                <li class="nav-item {% if url_name == 'logout' %}active{% endif %}">
+                                    <a class="nav-link" href="{% url 'logout' %}">Sign-out</a>
+                                </li>
+                                {% else %}
+                                <li class="nav-item {% if url_name == 'register' %}active{% endif %}">
+                                    <a class="nav-link" href="{% url 'register' %}">Signup</a>
+                                </li>
+                                <li class="nav-item {% if url_name == 'login' %}active{% endif %}">
+                                    <a class="nav-link" href="{% url 'login' %}">Sign-in</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    {% endwith %}
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

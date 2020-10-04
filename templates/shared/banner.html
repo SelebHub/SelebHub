@@ -1,13 +1,48 @@
-<section class="jumbotron text-center mb-lg-0">
+{% load static %}
+{% load compress %}
+<style>
+    .banner_image {
+        width: 80%;
+        height: auto;
+    }
+    .sub_1 {
+        font-weight: 500;
+        font-size: 22px;
+    }
+    .sub_2 {
+        position: relative;
+        margin-top: -45px;
+        font-size: 22px;
+        font-weight: 500;
+    }
+    .sub_2_m {
+        position: relative;
+        margin-top: 25px;
+        font-size: 15px;
+        font-weight: 500;
+    }
+    .btn_out_suc_custom:hover {
+        color: white;
+        background-color: #a7eab8;
+    }
+</style>
+<section class="jumbotron text-center mb-lg-0 bg-light-new-2">
     <div class="container">
-        <h1 class="jumbotron-heading">Get Your Favorite Influencer Here</h1>
-        <p class="lead">Temukan influencer yang sesuai dengan budget dan kebutuhanmu secara cepat dan tepat!.</p>
-        <p>
+        <h1 class="jumbotron-heading" style="font-family: 'DejaVu Sans'"><strong>Get Your Favorite Influencer Here</strong></h1>
+        <div class="">
+            <p class="sub_1">Temukan influencer yang sesuai dengan budget dan kebutuhanmu secara cepat dan tepat!.</p>
+            <div class="right_sub">
+            </div>
+            <img class="banner_image" src="{% static 'img/mother_fuckin_banner_dude.svg' %}" alt="Cari influencer terbaik untuk produkmu!.">
+            <p class="sub_2 d-lg-block d-none">Bingung cari influencer yang sesuai budget dan kriteria lainnya? <strong>SelebHub</strong> solusinya!</p>
+            <p class="sub_2_m d-lg-none d-block">Bingung cari influencer yang sesuai budget dan kriteria lainnya? <strong>SelebHub</strong> solusinya!</p>
+        </div>
+        <div class="pt-lg-5">
             {% if user.is_authenticated %}
-
+                <a href="{% url 'create' %}" class="btn btn-outline-success btn-lg my-2"><b>Promosikan diri</b></a>
             {% else %}
-                <a href="{% url 'register' %}" class="btn btn-outline-success my-2"><b>Join as an influencer</b></a>
+                <a href="{% url 'register' %}" class="btn btn-outline-success btn_out_suc_custom btn-lg my-2"><b>Join as an influencer</b></a>
             {% endif %}
-        </p>
+        </div>
     </div>
 </section>

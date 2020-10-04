@@ -41,7 +41,7 @@
                                         <img class="cat_person" src="{% static 'icons/person-circle.svg' %}" alt="">
                                         <b class="cat_name_detail">{{ i.my_name | slice:":17" }}</b>
                                     </span>
-                                    <a class="btn btn-secondary btn-sm right_btn" type="button" href="{% url 'detail' i.u_name %}">Detail</a>
+                                    <a class="btn btn-secondary btn-sm right_btn" type="button" href="{% url 'detail' i.u_name %}">Lihat</a>
                                 </div>
                             </div>
                         </div>
@@ -49,7 +49,7 @@
             {% else %}
                 <div class="text-center">
                     <img class="text-center" style="width: 30%; height: auto" src="{% static 'icons/broke.svg' %}" alt="">
-                    <h1>Oops, We don't have any matching profile in this category!. <br> Why not you <a
+                    <h1>Oops, We don't have any matching profile in this category!. <br> Why don't you <a
                             href="{% url 'create' %}"><b>create</b></a> one? </h1>
                 </div>
                 </div>

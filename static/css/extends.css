@@ -4,9 +4,29 @@
 .pb-lg-10 {
     padding-bottom: 8rem !important;
 }
+.pb-lg-12 {
+    padding-bottom: 10rem !important;
+}
 .pb-lg-20 {
     padding-bottom: 25rem !important;
 }
+
+.bg-light-new-1 {
+    background-color: #e5eee5 !important;
+}
+.bg-light-new-2 {
+    background-color: #e9efef !important;
+}
+
+
+.bg-dark-new {
+    background-color: #758c8c !important;
+}
+
+.txt-custom {
+  color: #def0fa !important;
+}
+
 .card-body {
     padding: 0.5rem !important;
 }
@@ -64,3 +84,12 @@
     width: 15%;
     height: 15vh;
 }
+
+/*custom button*/
+.btn_out_sec_custom .btn_out_sec_custom:hover {
+    background-color: #cbd4dd;
+}
+.btn_out_suc_custom .btn_out_suc_custom:hover {
+    background-color: #b4eec4;
+}
+/*End custom button*/

@@ -1,54 +1,169 @@
 {% load static %}
 {% load compress %}
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light pl-lg-5 pr-lg-5">
-<style>
-    .logo_nav {
-        width: 49%;
+<!-- Combine -->
+<style type="text/css">
+    nav{
+        padding: 1% 8%;
+        -webkit-box-shadow: 0 0 0 1px rgba(0,0,0,.15),0 2px 3px rgba(0,0,0,.1);
+        box-shadow: 0 0 0 1px rgba(0,0,0,.15),0 2px 3px rgba(0,0,0,.1);
     }
-    .active {
-        font-weight: bold;
-        color: #565760;
+    nav .logo{width: 15%;}
+    nav .logo img{width: 100%;}
+    nav ul{
+        margin-bottom: 0;
+        width: 84%;
+        text-align: right;
+    }
+    nav ul li{
+        position: relative;
+        display: inline-block;
+        padding: 0 1.5%;
+    }
+    nav ul li a{
+        font-family: 'montserrat', 'sans-serif';
+        {#font-weight: 600;#}
+        font-style: normal;
+        font-size: 14px;
+        color: rgba(0,0,0,.6);
+        transition: .5s;
+        cursor: pointer;
+    }
+    nav ul li a:hover{
+        text-decoration: none;
+        color: rgba(0,0,0,1);
+    }
+    /*Before Login*/
+    nav ul li a.signin{
+        padding: 8px 20px;
+        color: rgba(0,154,255,1);
+        background: transparent;
+        border: 1px solid rgba(0,154,255,1);
+        border-radius: 5px;
+    }
+    nav ul li a.signin:hover{
+        color: #fff;
+        background: linear-gradient(90deg, rgba(0,154,255,1) 0%, rgba(0,212,255,1) 100%);
+    }
+    nav ul li a.signup{
+        padding: 8px 20px;
+        color: #fff;
+        background: linear-gradient(90deg, rgba(0,154,255,1) 0%, rgba(0,212,255,1) 100%);
+        border: 1px solid rgba(0,154,255,1);
+        border-radius: 5px;
+    }
+    nav ul li a.signup:hover{
+        color: rgba(0,154,255,1);
+        background: transparent;
+    }
+    /*After Login*/
+    nav ul li .menu-picture{
+        position: absolute;
+        margin: 0 auto;
+        top: -15%;
+        left: 0;
+        right: 0;
+        width: 35px;
+        height: 35px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+    nav ul li .nav-wrap{
+        display: none;
+        position: absolute;
+        z-index: 1;
+        top: 30px;
+        left: -7vw;
+        width: 35vh;
+    }
+    nav ul li:hover .nav-wrap{display: block;}
+    nav ul li .nav-wrap .nav-account{
+        margin-top: 10%;
+        background: #fff;
+        -webkit-box-shadow: 0 0 0 1px rgba(0,0,0,.15),0 2px 3px rgba(0,0,0,.1);
+        box-shadow: 0 0 0 1px rgba(0,0,0,.15),0 2px 3px rgba(0,0,0,.1);
+    }
+    nav ul li .nav-wrap .nav-account .profile-picture{
+        width: 70px;
+        height: 70px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+    nav ul li .nav-wrap .nav-account h5{
+        margin: 15px 0 1px;
+        font-size: 18px;
+    }
+    nav ul li .nav-wrap .nav-account p{font-size: 13px;}
+    nav ul li .nav-wrap .nav-account ul{
+        padding: 0;
+        width: 100%;
+        text-align: left;
+    }
+    nav ul li .nav-wrap .nav-account ul li{
+        display: block;
+        padding: 2% 0;
+    }
+    nav ul li .nav-wrap .nav-account .line{
+        width: 100%;
+        border-bottom: 1px solid rgba(0,0,0,.15);
     }
 </style>
-
-<a class="navbar-brand" href="{% url 'home' %}">
-    <img class="logo_nav" src="{% static 'img/logos.png' %}" alt="SelebHub_Logo">
-</a>
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-</button>
-<div class="collapse navbar-collapse" id="navbarNav">
+<nav class="bg-light">
+    <a class="d-lg-inline-block logo" href="{% url 'home' %}"><img src="{% static 'img/logos.png' %}" /></a>
+    <!-- Python -->
     {% with url_name=request.resolver_match.url_name %}
-        <ul class="nav navbar-nav ml-auto">
+        <ul class="d-lg-inline-block">
             <li class="{% if url_name == 'search' %}active{% endif %}">
-                <a class="nav-link" href="{% url 'search' %}">Search</a>
+                <a href="{% url 'search' %}">Search</a>
             </li>
             <li class="{% if url_name == 'categories' %}active{% endif %}">
-                <a class="nav-link" href="{% url 'categories' %}">Categories</a>
+                <a href="{% url 'categories' %}">Categories</a>
             </li>
             <li class="{% if url_name == 'platforms' %}active{% endif %}">
-                <a class="nav-link" href="{% url 'platforms' %}">Platforms</a>
+                <a href="{% url 'platforms' %}">Platforms</a>
             </li>
-            <li class="nav-item {% if url_name == 'blog' %}active{% endif %}">
-                <a class="nav-link" href="{% url 'blog' %}">Blog</a>
+            <li class="{% if url_name == 'blog' %}active{% endif %}">
+                <a href="{% url 'blog' %}">Blog</a>
             </li>
             {% if user.is_authenticated %}
-                <li class="nav-item {% if url_name == 'account' %}active{% endif %}">
-                    <a class="nav-link" href="{% url 'account' %}">My Account</a>
-                </li>
-                <li class="nav-item {% if url_name == 'logout' %}active{% endif %}">
-                    <a class="nav-link" href="{% url 'logout' %}">Sign-out</a>
+                <li>
+                    <a style="color: white">Me</a>
+                    <img class="menu-picture" src="{{ user.profile.my_photo.url }}" alt="">
+{#                    <img class="menu-picture" src="https://media-exp1.licdn.com/dms/image/C5103AQGf7-safd35Ww/profile-displayphoto-shrink_100_100/0?e=1606953600&v=beta&t=lYD3hwcQ-dhtk4b2wG10fMyRbXiASFWYciHDYpySyeA" />#}
+                    <div class="nav-wrap">
+                        <div class="container-fluid nav-account">
+                            <div class="row">
+                                <div class="col-lg-5 pt-lg-3 pb-lg-3">
+                                    <img class="profile-picture" src="{{ user.profile.my_photo.url }}" alt="">
+{#                                    <img class="profile-picture" src="https://media-exp1.licdn.com/dms/image/C5103AQGf7-safd35Ww/profile-displayphoto-shrink_100_100/0?e=1606953600&v=beta&t=lYD3hwcQ-dhtk4b2wG10fMyRbXiASFWYciHDYpySyeA" />#}
+                                </div>
+                                <div class="col-lg-7 pt-lg-3 pb-lg-3 pl-lg-0 text-left">
+                                    <h5>{{user.username}}</h5>
+{#                                    <p>Personal Account</p>#}
+                                </div>
+                                <div class="line"></div>
+                                <div class="col-lg-12 pt-lg-3 pb-lg-3">
+                                    <ul>
+                                        <li class="{% if url_name == 'account' %}active{% endif %}">
+                                            <a href="{% url 'account' %}">My Account</a>
+                                        </li>
+                                        <li class="{% if url_name == 'logout' %}active{% endif %}">
+                                            <a href="{% url 'logout' %}">Sign Out</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </li>
                 {% else %}
-                <li class="nav-item {% if url_name == 'register' %}active{% endif %}">
-                    <a class="nav-link" href="{% url 'register' %}">Signup</a>
+                <li class="pr-lg-0 {% if url_name == 'login' %}active{% endif %}">
+                    <a class="signin" href="{% url 'login' %}"><b>Sign In</b></a>
                 </li>
-                <li class="nav-item {% if url_name == 'login' %}active{% endif %}">
-                    <a class="nav-link" href="{% url 'login' %}">Sign-in</a>
+                <li class="pr-lg-0 {% if url_name == 'register' %}active{% endif %}">
+                    <a class="signup" href="{% url 'register' %}"><b>Sign Up</b></a>
                 </li>
             {% endif %}
         </ul>
     {% endwith %}
-</div>
 </nav>

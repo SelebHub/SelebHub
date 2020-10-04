@@ -21,8 +21,8 @@
     .bd-footer-links li+li {
         margin-left: 1rem;
     }
-    .text-muted a{
-        color: #6c757d!important;
+    .txt-custom a{
+        color: #d5e2ec !important;
     }
     .left_foot {
     }
@@ -31,16 +31,24 @@
     }
 </style>
 
-<footer class="bd-footer text-muted">
-    <div class="container pt-lg-5 pb-lg-2 pt-3 pb-3">
+<footer class="bd-footer txt-custom bg-dark-new">
+    <div class="container pt-lg-3 pb-lg-2 pt-3 pb-3">
         <div class="row">
             <div class="col-lg-4">
-            <ul class="bd-footer-links left_foot pl-lg-0 pl-2">
-                <li><a href="{% url 'about' %}">About</a></li>
-                <li><a href="{% url 'contact' %}">Contact</a></li>
-                <li><a href="#">Term of Service</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-            </ul>
+                <ul class="bd-footer-links left_foot pl-lg-0 pl-2">
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    <li><a href="#">Term of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+                <div>
+                    <ul class="bd-footer-links left_foot pl-lg-0 pl-2">
+                        <li><a href="https://facebook.com/SelebHub/"><img class="footer_img" src="{% static 'icons/footer_icon/facebook.svg' %}" alt=""></a></li>
+                        <li><a href="https://instagram.com/SelebHub/"><img src="{% static 'icons/footer_icon/instagram.svg' %}" alt=""></a></li>
+                        <li><a href="https://linkedin.com/company/selebhub/"><img src="{% static 'icons/footer_icon/linkedin.svg' %}" alt=""></a></li>
+                        <li><a href="https://twitter.com/selebhub/"><img src="{% static 'icons/footer_icon/twitter.svg' %}" alt=""></a></li>
+                    </ul>
+                </div>
             </div>
             <div class="col-lg-4">
 
@@ -48,12 +56,14 @@
             <div class="col-lg-4">
                 <ul class="bd-footer-links pr-lg-0 pl-2">
                     <li><a href="https://github.com/icoldplayer">GitHub</a></li>
-                    <li><a href="https://twitter.com/sudoaptupgrade">Twitter</a></li>
+                    <li><a href="https://twitter.com/selebhub">Twitter</a></li>
                     <li><a href="http://notnoob.com">noTnoob Inc</a></li>
                     <li><a href="http://builtwith.me">BuiltWith.me</a></li>
                 </ul>
+                <div>
+                    <p>Develop by <a href="https://istock.id" target="_blank" rel="noopener">iStock ID</a> and sponsored by <a href="http://notnoob.com" target="_blank" rel="noopener">noTnoob. Inc</a>.</p>
+                </div>
             </div>
         </div>
-        <p>Develop by <a href="https://istock.id" target="_blank" rel="noopener">iStock Indonesia</a> and sponsored by <a href="http://notnoob.com" target="_blank" rel="noopener">noTnoob. Inc</a>.</p>
     </div>
 </footer>

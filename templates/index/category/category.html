@@ -13,20 +13,37 @@
         padding: 15px;
         margin: 5px;
     }
+    .cat_img {
+        position: relative;
+        opacity: 0.3;
+        width: 38%;
+        margin-top: -20%;
+        margin-left: -8%;
+        z-index: -1;
+    }
+    .cat_img_m {
+        position: absolute;
+        opacity: 0.2;
+        width: 60%;
+        margin-top: -35%;
+        margin-left: -3%;
+    }
     </style>
     <div class="container">
-        <div class="row pt-lg-5 pb-lg-10">
+        <div class="row pt-lg-5 pb-lg-12">
             <div class="col-lg-12">
                 <div class="pt-3 pb-3">
                     <h3 class="text-muted"><b>All categories</b></h3>
                 </div>
                 <div class="text-center">
                     {% for i in categories %}
-                        <a class="btn btn-light btn_categories" type="button" href="{% url 'cat_detail' i.name %}">
+                        <a class="btn btn-light btn_categories " type="button" href="{% url 'cat_detail' i.name %}">
                         <img class="img_categories" src="{{ i.img.url }}" alt="Profile by categories"> {{ i }}</a>
                     {% endfor %}
                 </div>
             </div>
         </div>
+        <img class="cat_img d-lg-block d-none" src="{% static 'img/categories.svg' %}" alt="">
+        <img class="cat_img_m d-block d-lg-none" src="{% static 'img/categories.svg' %}" alt="">
     </div>
 {% endblock %}

@@ -49,11 +49,12 @@
                             <li><img src="{% static 'icons/card-heading.svg' %}" alt=""> <b class="text-muted">{{ x.my_name }}</b></li>
                             <li><img src="{% static 'icons/person-dash.svg' %}" alt=""> {{ x.my_age }}</li>
                             <li><img src="{% static 'icons/email.svg' %}" alt=""> <a href="mailto:{{ x.my_email }}">{{ x.my_email }}</a></li>
-                            <li><img src="{% static 'icons/instagram.svg' %}" alt=""> <a target="_blank" href="https://instagram.com/{{ x.my_instagram }}">@{{ x.my_instagram }}</a></li>
-                            <li><img src="{% static 'icons/facebook.svg' %}" alt=""> <a target="_blank" href="https://facebook.com/{{ x.my_facebook }}">@{{ x.my_facebook }}</a></li>
-                            <li><img src="{% static 'icons/twitter.svg' %}" alt=""> <a target="_blank" href="https://twitter.com/{{ x.my_twitter }}">@{{ x.my_twitter }}</a></li>
-                            <li><img src="{% static 'icons/linkedin.svg' %}" alt=""> <a target="_blank" href="https://linkedin.com/in/{{ x.my_twitter }}">@{{ x.my_linkedin }}</a></li>
-                            <li><img src="{% static 'icons/cash.svg' %}" alt=""> {{ x.my_price }}</li>
+                            <li><img src="{% static 'icons/smartphone.svg' %}" alt=""> {{ endorse_form.my_phone }}</li>
+                            <li><img src="{% static 'icons/instagram.svg' %}" alt=""> @<a target="_blank" href="https://instagram.com/{{ x.my_instagram }}">{{ x.my_instagram | default_if_none:'' }}</a></li>
+                            <li><img src="{% static 'icons/facebook.svg' %}" alt=""> @<a target="_blank" href="https://facebook.com/{{ x.my_facebook }}">{{ x.my_facebook | default_if_none:'' }}</a></li>
+                            <li><img src="{% static 'icons/twitter.svg' %}" alt=""> @<a target="_blank" href="https://twitter.com/{{ x.my_twitter }}">{{ x.my_twitter | default_if_none:'' }}</a></li>
+                            <li><img src="{% static 'icons/linkedin.svg' %}" alt=""> @<a target="_blank" href="https://linkedin.com/in/{{ x.my_twitter }}">{{ x.my_linkedin | default_if_none:'' }}</a></li>
+                            <li><img src="{% static 'icons/cash.svg' %}" alt=""> Rp. {{ x.my_price }}</li>
                         </ul>
                     </div>
 

@@ -16,7 +16,7 @@
             <div class="card card_endorse">
                 <div class="pt-lg-3">
                     <div class="text-center">
-                        <h5>Your endorse detail</h5>
+                        <h5>Detail iklan saya</h5>
                     </div>
                     <ul class="my_endorse">
                         <li><img src="{% static 'icons/person-circle.svg' %}" alt=""> {{ endorse_form.u_name }}</li>
@@ -24,10 +24,11 @@
                         <li><img src="{% static 'icons/card-heading.svg' %}" alt=""> {{ endorse_form.my_name }}</li>
                         <li><img src="{% static 'icons/person-dash.svg' %}" alt=""> {{ endorse_form.my_age }}</li>
                         <li><img src="{% static 'icons/email.svg' %}" alt=""> <a href="mailto:{{ x.my_email }}">{{ endorse_form.my_email }}</a></li>
-                        <li><img src="{% static 'icons/instagram.svg' %}" alt=""> <a target="_blank" href="https://instagram.com/{{ x.my_instagram }}">@{{ endorse_form.my_instagram }}</a></li>
-                        <li><img src="{% static 'icons/facebook.svg' %}" alt=""> <a target="_blank" href="https://facebook.com/{{ x.my_facebook }}">@{{ endorse_form.my_facebook }}</a></li>
-                        <li><img src="{% static 'icons/twitter.svg' %}" alt=""> <a target="_blank" href="https://twitter.com/{{ x.my_twitter }}">@{{ endorse_form.my_twitter }}</a></li>
-                        <li><img src="{% static 'icons/linkedin.svg' %}" alt=""> <a target="_blank" href="https://linkedin.com/in/{{ x.my_twitter }}">@{{ endorse_form.my_linkedin }}</a></li>
+                        <li><img src="{% static 'icons/smartphone.svg' %}" alt=""> {{ endorse_form.my_phone }}</li>
+                        <li><img src="{% static 'icons/instagram.svg' %}" alt=""> @<a target="_blank" href="https://instagram.com/{{ x.my_instagram }}">{{ endorse_form.my_instagram | default_if_none:''}}</a></li>
+                        <li><img src="{% static 'icons/facebook.svg' %}" alt=""> @<a target="_blank" href="https://facebook.com/{{ x.my_facebook }}">{{ endorse_form.my_facebook | default_if_none:''}}</a></li>
+                        <li><img src="{% static 'icons/twitter.svg' %}" alt=""> @<a target="_blank" href="https://twitter.com/{{ x.my_twitter }}">{{ endorse_form.my_twitter | default_if_none:''}}</a></li>
+                        <li><img src="{% static 'icons/linkedin.svg' %}" alt=""> @<a target="_blank" href="https://linkedin.com/in/{{ x.my_twitter }}">{{ endorse_form.my_linkedin | default_if_none:''}}</a></li>
                         <li><img src="{% static 'icons/cash.svg' %}" alt=""> Rp. {{ endorse_form.my_price }}</li>
                     </ul>
                 </div>

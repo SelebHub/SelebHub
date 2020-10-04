@@ -5,20 +5,26 @@
 
 {% block content %}
     <title>{% block title %}Contact | SelebHub{% endblock %}</title>
+        <style>
+            .contact_img {
+                width: 100%;
+                height: auto;
+            }
+        </style>
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="text-center pt-lg-5 pb-lg-5">
-                    <h5>Got any question? <br>
-                        We would like to help you find the best solution for your issue.
+                <div class="text-center pt-lg-5 pb-lg-5 pt-5 pb-3">
+                    <h5 class="text-muted">Got any question? <br>
+                        We would like to help you to find the best solution for your issue.
                     </h5>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <div>
-                    <img src="{% static 'icons/call-to-action.svg' %}" alt="">
+        <div class="row pb-lg-5 pb-3">
+            <div class="col-lg-6 pt-lg-5 pr-lg-5">
+                <div class="d-none d-lg-block">
+                    <img class="contact_img" src="{% static 'img/contact.svg' %}" alt="">
                 </div>
             </div>
             <div class="col-lg-6 pb-lg-5 pb-5">

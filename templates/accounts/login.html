@@ -5,14 +5,25 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <title>{% block title %} Login | SelebHub {% endblock %}</title>
+<title>{% block title %} Login | SelebHub {% endblock %}</title>
+    <style>
+        .login_img {
+            z-index: -3;
+            opacity: 0.5;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            float: left;
+        }
+    </style>
   <div class="container pt-lg-5 pb-lg-5">
+      <img class="login_img" src="{% static 'img/teamup.svg' %}" alt="">
         <div class="row">
             <div class="col-lg-4 col-2">
 
             </div>
             <div class="col-lg-4 col-8 pt-5 pb-5">
-               <h2 style="text-align: center">Sign-in</h2>
+               <h2 style="text-align: center"><strong>Sign-in</strong></h2>
                 <div>
                       <form method="post" enctype="multipart/form-data">
                           {% csrf_token %}
@@ -26,6 +37,7 @@
                       </form>
                       <div class="border-top pt-3">
                           <small class="text-muted">
+                            <a href="{% url 'password_reset' %}">Forgot Password?</a> <br>
                           Don't have an account yet? <strong> <a href="{% url 'register' %}">Sign-up</a></strong> here
                           </small>
                       </div>

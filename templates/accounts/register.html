@@ -5,14 +5,39 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-        <title>{% block title %} Signup | SelebHub {% endblock %}</title>
+<title>{% block title %} Signup | SelebHub {% endblock %}</title>
+    <style>
+    .sign_up_img {
+        width: 100%;
+        height: auto;
+        margin-top: 50%;
+    }
+    .sign_up_img_2 {
+        margin-top: -36rem;
+        z-index: -4;
+        position: fixed;
+        opacity: 0.4;
+        width: 100%;
+        height: 100%;
+    }
+    .mbl_img_sg {
+        margin-top: -3rem;
+        z-index: -4;
+        position: fixed;
+        opacity: 0.4;
+        width: 100%;
+        height: 100%;
+    }
+    </style>
   <div class="container pt-lg-5 pb-lg-5">
         <div class="row">
-            <div class="col-lg-3 col-1">
-
+            <div class="col-lg-5 col-1">
+                <img class="sign_up_img" src="{% static 'img/welcome.svg' %}" alt="">
+                <img class="sign_up_img_2 d-none d-lg-block" src="{% static 'img/fall.svg' %}" alt="">
+                <img class="mbl_img_sg d-block d-lg-none" src="{% static 'img/fall.svg' %}" alt="">
             </div>
-            <div class="col-lg-6 col-10 pt-5 pb-5">
-               <h2 style="text-align: center">Sign up</h2>
+            <div class="col-lg-7 col-10 pt-5 pb-5">
+               <h2 class="text-center"><strong>Sign up</strong></h2>
                 <div>
                       <form method="post" enctype="multipart/form-data">
                           {% csrf_token %}
@@ -31,9 +56,9 @@
                       </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-1">
-
-            </div>
+{#            <div class="col-lg-3 col-1">#}
+{##}
+{#            </div>#}
         </div>
     </div>
 {% endblock %}

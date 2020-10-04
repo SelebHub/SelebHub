@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load compress %}
 
 {% block content %}
     <title> {% block title %}Home | SelebHub{% endblock %}</title>
@@ -13,7 +14,10 @@
                 object-fit: cover;
             }
         </style>
-        <div class="album py-5 bg-light">
+
+        {% include 'index/home_platforms.html' %}
+
+        <div class="album py-5 bg-light-new-2">
             <div class="container">
                 <div class="row pl-3 pr-3">
                     {% for i in x %}
@@ -25,7 +29,7 @@
                                         Category: <a id="btn_small" class="btn btn-outline-success btn-sm" type="button" href="{% url 'cat_detail' i.category %}">{{ i.category }}</a>
                                         <div class="d-flex justify-content-between align-items-center pt-lg-2">
                                         <div class="btn-group">
-                                        <a id="btn_small" class="btn btn-sm btn-outline-secondary btn-sm" href="u/{{ i.u_name }}">View</a>
+                                        <a id="btn_small" class="btn btn-sm btn-outline-secondary btn_out_sec_custom btn btn-sm" href="u/{{ i.u_name }}">View</a>
                                     </div>
                                 <small class="text-muted">{{ i.joined | date:"d M, Y" }}</small>
                                 </div>
